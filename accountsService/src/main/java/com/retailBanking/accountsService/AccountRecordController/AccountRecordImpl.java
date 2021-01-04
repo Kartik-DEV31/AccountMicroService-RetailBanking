@@ -10,7 +10,6 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -42,7 +41,7 @@ public class AccountRecordImpl implements AccountRecord {
 	AccountTransaction accountTransaction;
 	
 	
-	
+	@Override
 	@GetMapping("/accountsForHomePage")
 	public List<AccountsModel> getaccountsForHomePage(@RequestParam(name = "id") Double id) {
 		this.id = id;
@@ -82,8 +81,8 @@ public class AccountRecordImpl implements AccountRecord {
 	}
 
 	@Override
-	@GetMapping("/getSpecificAccount/{accountno}")
-	public List<AccountsModel> getAccountDetailsByAccountNo(@PathVariable("accountno") String accNo) {
+	@PostMapping("/getSpecificAccount")
+	public List<AccountsModel> getAccountDetailsByAccountNo(@RequestParam("accountno") String accNo) {
 
 		accountNo = new BigInteger(accNo);
 
@@ -91,6 +90,7 @@ public class AccountRecordImpl implements AccountRecord {
 		return accountDetailsByAccountNoList;
 	}
 
+	@Override
 	@GetMapping("/getCreditCardDetatils")
 	public List<CreditCardModel> getCreditCardDetatils() {
 
@@ -104,10 +104,11 @@ public class AccountRecordImpl implements AccountRecord {
 		return creditCardData;
 	}
 
+	@Override
 	@PostMapping(value = "/getAccountTransactionData", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public List<TransactionMicroServiceModel> getAccountTransactionData(@RequestParam("accNo") String accNo) {
 		accountNo = new BigInteger(accNo);
-
+System.out.println("here");
 		return accountTransaction.getTransactionByAccount(accountNo);
 
 	}

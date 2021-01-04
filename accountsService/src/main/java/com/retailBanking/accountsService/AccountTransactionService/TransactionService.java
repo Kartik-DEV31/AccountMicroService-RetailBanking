@@ -1,4 +1,4 @@
-package com.retailBanking.accountsService.TransactionService;
+package com.retailBanking.accountsService.AccountTransactionService;
 
 import java.math.BigInteger;
 import java.util.List;
