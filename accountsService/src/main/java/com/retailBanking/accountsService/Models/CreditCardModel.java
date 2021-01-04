@@ -86,8 +86,8 @@ public class CreditCardModel {
 		super();
 	}
 
-	public CreditCardModel(long creditCardNumber, long accountNo, BigInteger creditLimit,
-			BigInteger avaliableLimit, LocalDate paymentDueDate, BigInteger minimumPayment) {
+	public CreditCardModel(long creditCardNumber, long accountNo, BigInteger creditLimit, BigInteger avaliableLimit,
+			LocalDate paymentDueDate, BigInteger minimumPayment) {
 		super();
 		this.creditCardNumber = creditCardNumber;
 		this.accountNo = accountNo;

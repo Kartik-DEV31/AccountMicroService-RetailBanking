@@ -1,25 +1,33 @@
 package com.retailBanking.accountsService.AccountTransactionController;
 
-import java.math.BigInteger;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.retailBanking.accountsService.AccountTransactionService.TransactionService;
+import com.retailBanking.accountsService.Exceptions.ExceptionImpl;
 import com.retailBanking.accountsService.Models.Transaction;
 import com.retailBanking.accountsService.Repository.TransactionServiceProxy;
 
 @RestController
 public class AccountTransactionImpl implements AccountTransaction {
 	@Autowired
-	TransactionServiceProxy service;
+	TransactionServiceProxy repo;
+	
+	@Autowired
+	ExceptionImpl exception;
+
+	
+	@Autowired
 
 	@Override
-	public List<Transaction> getTransactionByAccount(long accNo) {
-		List<Transaction> transaction = service.getTransactionByAccount(accNo);
+	public List<Transaction> getTransactionByAccount(long accNo) throws Exception {
+		List<Transaction> transaction = repo.getTransactionByAccount(accNo);
+		
+		if (transaction.isEmpty())
+				exception.noTransactionFound();
+			
 		return transaction;
 	}
 

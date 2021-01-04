@@ -1,6 +1,5 @@
 package com.retailBanking.accountsService.AccountRecordController;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -8,7 +7,6 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -39,14 +37,14 @@ public class AccountRecordImpl implements AccountRecord {
 
 	@Autowired
 	AccountTransaction accountTransaction;
-	
-	
+
 	@Override
 	@GetMapping("/accountsForHomePage")
 	public List<AccountsModel> getaccountsForHomePage(@RequestParam(name = "id") Double id) {
 		this.id = id;
 		this.type = "savings";
-		List<AccountsModel> getThreeAccounts =getAllAccountDetails(type, id).stream().limit(3).collect(Collectors.toList());
+		List<AccountsModel> getThreeAccounts = getAllAccountDetails(type, id).stream().limit(3)
+				.collect(Collectors.toList());
 		return getThreeAccounts;
 	}
 
@@ -71,7 +69,7 @@ public class AccountRecordImpl implements AccountRecord {
 	}
 
 	@Override
-	public List<AccountsModel> getAllAccountsListforType( String type) {
+	public List<AccountsModel> getAllAccountsListforType(String type) {
 
 		System.out.println(type);
 		List<AccountsModel> data = service.getAllAccountsListforType(type, id);
@@ -84,7 +82,7 @@ public class AccountRecordImpl implements AccountRecord {
 	@PostMapping("/getSpecificAccount")
 	public List<AccountsModel> getAccountDetailsByAccountNo(@RequestParam("accountno") String accNo) {
 
-	  accountNo = Long.parseLong(accNo);
+		accountNo = Long.parseLong(accNo);
 
 		List<AccountsModel> accountDetailsByAccountNoList = service.getAccountDetailsByAccountNo(accountNo);
 		return accountDetailsByAccountNoList;
@@ -93,7 +91,7 @@ public class AccountRecordImpl implements AccountRecord {
 	@Override
 	@GetMapping("/getCreditCardDetatils")
 	public List<CreditCardModel> getCreditCardDetatils() {
-        
+
 		System.out.println(accountNo);
 		List<CreditCardModel> creditCardData = new ArrayList<CreditCardModel>();
 		try {
@@ -109,10 +107,16 @@ public class AccountRecordImpl implements AccountRecord {
 	@PostMapping(value = "/getAccountTransactionData", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public List<Transaction> getAccountTransactionData(@RequestParam("accNo") String accNo) {
 		long accountNo = Long.parseLong(accNo);
-		return accountTransaction.getTransactionByAccount(accountNo);
+		List<Transaction> transactionData = new ArrayList<Transaction>();
+		try {
+		transactionData	= accountTransaction.getTransactionByAccount(accountNo);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("Opps no data found, if problem presists please raise a request to customer care");
+		}
+		
+		return transactionData;
 
 	}
-	
-
 
 }

@@ -17,4 +17,9 @@ public class ExceptionImpl implements Exceptions {
 
 	}
 
+	public void noTransactionFound() throws Exception {
+		throw new Exception("NoTransactionFound");
+		
+	}
+
 }

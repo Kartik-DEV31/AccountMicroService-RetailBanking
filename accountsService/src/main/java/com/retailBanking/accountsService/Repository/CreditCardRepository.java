@@ -1,6 +1,5 @@
 package com.retailBanking.accountsService.Repository;
 
-import java.math.BigInteger;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
