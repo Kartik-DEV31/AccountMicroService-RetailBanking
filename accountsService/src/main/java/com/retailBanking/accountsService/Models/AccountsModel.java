@@ -18,7 +18,7 @@ public class AccountsModel {
 
 	@Id
 	@Column(name = "accountno")
-	private BigInteger accountNo;
+	private long accountNo;
 
 	@Column(name = " accounttype")
 	private String accountType;
@@ -29,11 +29,11 @@ public class AccountsModel {
 	@Column(name = "accountbalance")
 	private BigInteger accountBalance;
 
-	public BigInteger getAccountNo() {
+	public long getAccountNo() {
 		return accountNo;
 	}
 
-	public void setAccountNo(BigInteger accountNo) {
+	public void setAccountNo(long accountNo) {
 		this.accountNo = accountNo;
 	}
 
@@ -75,7 +75,7 @@ public class AccountsModel {
 	 * cardModel; }
 	 */
 
-	public AccountsModel(BigInteger accountNo, String accountType, String accountNickName, BigInteger accountBalance,
+	public AccountsModel(long accountNo, String accountType, String accountNickName, BigInteger accountBalance,
 			List<CreditCardModel> cardModel) {
 		super();
 		this.accountNo = accountNo;

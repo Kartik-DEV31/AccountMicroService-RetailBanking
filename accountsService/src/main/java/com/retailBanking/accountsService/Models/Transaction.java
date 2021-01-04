@@ -47,6 +47,11 @@ public class Transaction {
 		this.date = date;
 	}
 
+	@Override
+	public String toString() {
+		return "Transaction [transactionId=" + transactionId + ", amount=" + amount + ", date=" + date + "]";
+	}
+
 	
 	
 	

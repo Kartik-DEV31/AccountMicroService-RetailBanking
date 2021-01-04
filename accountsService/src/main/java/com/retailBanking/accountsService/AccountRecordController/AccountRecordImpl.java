@@ -71,7 +71,7 @@ public class AccountRecordImpl implements AccountRecord {
 	}
 
 	@Override
-	public List<AccountsModel> getAllAccountsListforType(@RequestParam(name = "type") String type) {
+	public List<AccountsModel> getAllAccountsListforType( String type) {
 
 		System.out.println(type);
 		List<AccountsModel> data = service.getAllAccountsListforType(type, id);
@@ -84,7 +84,7 @@ public class AccountRecordImpl implements AccountRecord {
 	@PostMapping("/getSpecificAccount")
 	public List<AccountsModel> getAccountDetailsByAccountNo(@RequestParam("accountno") String accNo) {
 
-		long accountNo = Long.parseLong(accNo);
+	  accountNo = Long.parseLong(accNo);
 
 		List<AccountsModel> accountDetailsByAccountNoList = service.getAccountDetailsByAccountNo(accountNo);
 		return accountDetailsByAccountNoList;
@@ -93,7 +93,8 @@ public class AccountRecordImpl implements AccountRecord {
 	@Override
 	@GetMapping("/getCreditCardDetatils")
 	public List<CreditCardModel> getCreditCardDetatils() {
-
+        
+		System.out.println(accountNo);
 		List<CreditCardModel> creditCardData = new ArrayList<CreditCardModel>();
 		try {
 			creditCardData = service.getCreditCardDetatils(accountNo);

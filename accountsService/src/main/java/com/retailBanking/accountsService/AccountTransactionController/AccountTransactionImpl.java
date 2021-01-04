@@ -6,14 +6,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.retailBanking.accountsService.AccountTransactionService.TransactionService;
 import com.retailBanking.accountsService.Models.Transaction;
+import com.retailBanking.accountsService.Repository.TransactionServiceProxy;
 
-@Controller
+@RestController
 public class AccountTransactionImpl implements AccountTransaction {
 	@Autowired
-	TransactionService service;
+	TransactionServiceProxy service;
 
 	@Override
 	public List<Transaction> getTransactionByAccount(long accNo) {

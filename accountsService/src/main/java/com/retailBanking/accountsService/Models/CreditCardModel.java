@@ -16,10 +16,10 @@ public class CreditCardModel {
 
 	@Id
 	@Column(name = "creditcardnumber")
-	private BigInteger creditCardNumber;
+	private long creditCardNumber;
 
 	@Column(name = "accountno")
-	private BigInteger accountNo;
+	private long accountNo;
 
 	@Column(name = "creditlimit")
 	private BigInteger creditLimit;
@@ -34,19 +34,19 @@ public class CreditCardModel {
 	@Column(name = "minimumpayment")
 	private BigInteger minimumPayment;
 
-	public BigInteger getCreditCardNumber() {
+	public long getCreditCardNumber() {
 		return creditCardNumber;
 	}
 
-	public void setCreditCardNumber(BigInteger creditCardNumber) {
+	public void setCreditCardNumber(long creditCardNumber) {
 		this.creditCardNumber = creditCardNumber;
 	}
 
-	public BigInteger getAccountNo() {
+	public long getAccountNo() {
 		return accountNo;
 	}
 
-	public void setAccountNo(BigInteger accountNo) {
+	public void setAccountNo(long accountNo) {
 		this.accountNo = accountNo;
 	}
 
@@ -86,7 +86,7 @@ public class CreditCardModel {
 		super();
 	}
 
-	public CreditCardModel(BigInteger creditCardNumber, BigInteger accountNo, BigInteger creditLimit,
+	public CreditCardModel(long creditCardNumber, long accountNo, BigInteger creditLimit,
 			BigInteger avaliableLimit, LocalDate paymentDueDate, BigInteger minimumPayment) {
 		super();
 		this.creditCardNumber = creditCardNumber;
