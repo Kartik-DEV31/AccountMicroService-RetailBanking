@@ -3,10 +3,10 @@ package com.retailBanking.accountsService.AccountTransactionController;
 import java.math.BigInteger;
 import java.util.List;
 
-import com.retailBanking.accountsService.Models.TransactionMicroServiceModel;
+import com.retailBanking.accountsService.Models.Transaction;
 
 public interface AccountTransaction {
 
-	List<TransactionMicroServiceModel> getTransactionByAccount(BigInteger accountNo);
+	List<Transaction> getTransactionByAccount(long accountNo);
 
 }

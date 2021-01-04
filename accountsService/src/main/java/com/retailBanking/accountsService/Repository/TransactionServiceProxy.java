@@ -1,20 +1,20 @@
 package com.retailBanking.accountsService.Repository;
 
-import java.math.BigInteger;
 import java.util.List;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.GetMapping;
 
-import com.retailBanking.accountsService.Models.AccountsModel;
-import com.retailBanking.accountsService.Models.TransactionMicroServiceModel;
+import com.retailBanking.accountsService.Models.Transaction;
 
 //@FeignClient(name="transaction-service")
 //@RibbonClient(name="transaction-service")
 @Repository
-public interface TransactionServiceProxy extends JpaRepository<AccountsModel, BigInteger> {
+public interface TransactionServiceProxy{
 	
-	//List<TransactionMicroServiceModel> getTransactionByAccount(BigInteger accNo);
+	@GetMapping(value="account/{accountNo}",produces = { MediaType.APPLICATION_JSON_VALUE})
+	List<Transaction> getTransactionByAccount(long accNo);
 
 
 }

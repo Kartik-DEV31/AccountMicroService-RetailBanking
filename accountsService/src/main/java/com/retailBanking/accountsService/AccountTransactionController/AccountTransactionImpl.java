@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import com.retailBanking.accountsService.AccountTransactionService.TransactionService;
-import com.retailBanking.accountsService.Models.TransactionMicroServiceModel;
+import com.retailBanking.accountsService.Models.Transaction;
 
 @Controller
 public class AccountTransactionImpl implements AccountTransaction {
@@ -16,8 +16,8 @@ public class AccountTransactionImpl implements AccountTransaction {
 	TransactionService service;
 
 	@Override
-	public List<TransactionMicroServiceModel> getTransactionByAccount(BigInteger accNo) {
-		List<TransactionMicroServiceModel> transaction = service.getTransactionByAccount(accNo);
+	public List<Transaction> getTransactionByAccount(long accNo) {
+		List<Transaction> transaction = service.getTransactionByAccount(accNo);
 		return transaction;
 	}
 

@@ -1,13 +1,13 @@
 package com.retailBanking.accountsService.AccountTransactionService;
 
-import java.math.BigInteger;
+
 import java.util.List;
 
-import com.retailBanking.accountsService.Models.TransactionMicroServiceModel;
+import com.retailBanking.accountsService.Models.Transaction;
 
 public interface TransactionService {
 
-	List<TransactionMicroServiceModel> getTransactionByAccount(BigInteger accNo);
+	List<Transaction> getTransactionByAccount(long accNo);
 	
 	
 

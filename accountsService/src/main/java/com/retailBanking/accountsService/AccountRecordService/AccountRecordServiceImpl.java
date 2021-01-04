@@ -54,7 +54,7 @@ public class AccountRecordServiceImpl implements AccountRecordService {
 	}
 
 	@Override
-	public List<AccountsModel> getAccountDetailsByAccountNo(BigInteger accountNo) {
+	public List<AccountsModel> getAccountDetailsByAccountNo(long accountNo) {
 
 		List<AccountsModel> data = repo.getAccountDetailsByAccountNo(accountNo);
 
@@ -62,7 +62,7 @@ public class AccountRecordServiceImpl implements AccountRecordService {
 	}
 
 	@Override
-	public List<CreditCardModel> getCreditCardDetatils(BigInteger accountNo) throws Exception {
+	public List<CreditCardModel> getCreditCardDetatils(long accountNo) throws Exception {
 		List<CreditCardModel> data = crepo.getCreditCardDetatils(accountNo);
 
 		if (data.isEmpty())

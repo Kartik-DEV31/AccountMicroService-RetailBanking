@@ -1,15 +1,14 @@
 package com.retailBanking.accountsService.Models;
-
 import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-public class TransactionMicroServiceModel {
+public class Transaction {
 	
 	private double transactionId;
 	   private double amount;
 	   
-	   @JsonFormat(pattern = "dd-MM-yyyy")
+	   @JsonFormat(pattern="dd-MM-yyyy")
 	   private LocalDate date;
 
 	public double getTransactionId() {
@@ -36,17 +35,21 @@ public class TransactionMicroServiceModel {
 		this.date = date;
 	}
 
-	public TransactionMicroServiceModel() {
+	public Transaction() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public TransactionMicroServiceModel(double transactionId, double amount, LocalDate date) {
+	public Transaction(double transactionId, double amount, LocalDate date) {
 		super();
 		this.transactionId = transactionId;
 		this.amount = amount;
 		this.date = date;
 	}
+
+	
+	
+	
 	   
 	   
 		

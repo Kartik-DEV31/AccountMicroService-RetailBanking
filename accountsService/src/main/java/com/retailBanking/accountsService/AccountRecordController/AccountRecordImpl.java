@@ -18,7 +18,7 @@ import com.retailBanking.accountsService.AccountTransactionController.AccountTra
 import com.retailBanking.accountsService.BusinessLogic.First5Accounts;
 import com.retailBanking.accountsService.Models.AccountsModel;
 import com.retailBanking.accountsService.Models.CreditCardModel;
-import com.retailBanking.accountsService.Models.TransactionMicroServiceModel;
+import com.retailBanking.accountsService.Models.Transaction;
 
 @RestController
 public class AccountRecordImpl implements AccountRecord {
@@ -27,7 +27,7 @@ public class AccountRecordImpl implements AccountRecord {
 
 	String type;
 
-	BigInteger accountNo;
+	long accountNo;
 
 	List<AccountsModel> data = new ArrayList<AccountsModel>();
 
@@ -84,7 +84,7 @@ public class AccountRecordImpl implements AccountRecord {
 	@PostMapping("/getSpecificAccount")
 	public List<AccountsModel> getAccountDetailsByAccountNo(@RequestParam("accountno") String accNo) {
 
-		accountNo = new BigInteger(accNo);
+		long accountNo = Long.parseLong(accNo);
 
 		List<AccountsModel> accountDetailsByAccountNoList = service.getAccountDetailsByAccountNo(accountNo);
 		return accountDetailsByAccountNoList;
@@ -106,9 +106,8 @@ public class AccountRecordImpl implements AccountRecord {
 
 	@Override
 	@PostMapping(value = "/getAccountTransactionData", produces = { MediaType.APPLICATION_JSON_VALUE })
-	public List<TransactionMicroServiceModel> getAccountTransactionData(@RequestParam("accNo") String accNo) {
-		accountNo = new BigInteger(accNo);
-System.out.println("here");
+	public List<Transaction> getAccountTransactionData(@RequestParam("accNo") String accNo) {
+		long accountNo = Long.parseLong(accNo);
 		return accountTransaction.getTransactionByAccount(accountNo);
 
 	}

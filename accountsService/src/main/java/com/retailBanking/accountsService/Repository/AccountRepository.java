@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.retailBanking.accountsService.Models.AccountsModel;
 
-public interface AccountRepository extends JpaRepository<AccountsModel, BigInteger> {
+public interface AccountRepository extends JpaRepository<AccountsModel, Long> {
 
 	@Query("select a from AccountsModel a where a.accountType = ?1 and a.userid=?2")
 	List<AccountsModel> findByAccountType(String type , Double id);
@@ -17,6 +17,6 @@ public interface AccountRepository extends JpaRepository<AccountsModel, BigInteg
 	List<AccountsModel> fetchAllAccounts(String type, Double id);
 	
 	@Query("select a from AccountsModel a where a.accountNo=?1")
-	List<AccountsModel> getAccountDetailsByAccountNo(BigInteger accountNo);
+	List<AccountsModel> getAccountDetailsByAccountNo(long accountNo);
 
 }

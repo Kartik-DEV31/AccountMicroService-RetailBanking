@@ -20,10 +20,10 @@ public interface AccountRecordService {
 
 
 
-	List<AccountsModel> getAccountDetailsByAccountNo(BigInteger accountNo);
+	List<AccountsModel> getAccountDetailsByAccountNo(long accountNo);
 
 
 
-	List<CreditCardModel> getCreditCardDetatils(BigInteger accountNo) throws Exception;
+	List<CreditCardModel> getCreditCardDetatils(long accountNo) throws Exception;
 	
 }
